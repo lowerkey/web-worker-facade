@@ -6,7 +6,7 @@ A JavaScript implementation of the 2007 Veldhuizen paper [Dynamic Multilevel Gra
 The goal of this project is to fulfill the following interface of a yet to be defined graph. 
 
 ### newVertex() 
-Returns the id of a newly created vertex
+Returns the id of a newly created vertex.
 
 ### newEdge(v1id, v2id) 
 Takes as arguments the ids of two vertices. 
