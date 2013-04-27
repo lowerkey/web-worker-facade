@@ -30,6 +30,9 @@ getPositions(function(positions){ console.log(positions) });
 ## Design
 Posiphyss will use web workers to hide the main simulation from the user, providing the interface defined above. The simulation web worker is wrapped by a layout-bridge with mostly mimics the graph interface. 
 
+### layout-bridge and layout-worker
+The layout-bridge will wrap creation of and requests to the layout-worker. Internally, it assigns a ticket which is returned from the layout-worker so the layout-bridge can execute the appropriate callback. 
+
 More details will follow as the project progresses.
 
 ## Roadmap
@@ -37,6 +40,6 @@ More details will follow as the project progresses.
 1. Check out promises, and decide whether to rework layout-bridge to return them.
 2. After that, the project will implement section 4 of the linked paper, Dynamic Coarsening. 
 
-
 ## Usage
-It's still too early for that, but eventually, you'll have to include the layout-bridge, which will create a web worker from layout-worker.min.js
+It's still too early for that, but eventually, you'll have to include the layout-bridge, which will create a web worker from `layout-worker.min.js`.
+
