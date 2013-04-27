@@ -23,6 +23,6 @@ Returns the positions of all vertices, as a JSON array of 3D positions.
 
 ```
 getPositions()
-// [{x: 0, y: 0, z}, {x: 3, y: 42, z: 26}, ...]
+// [{"x": 0, "y": 0, "z": 0}, {"x": 3, "y": 42, "z": 26}, ...]
 ```
 
