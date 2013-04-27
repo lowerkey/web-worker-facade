@@ -4,7 +4,7 @@
 	2013-04-27
 */
 
-var LayoutBridge = function(){
+var LayoutFacade = function(){
 
 	this._waiting = {};
 	this._initialized = false;
@@ -12,7 +12,7 @@ var LayoutBridge = function(){
 
 };
 
-LayoutBridge.prototype.init = function(){
+LayoutFacade.prototype.init = function(){
 	if(!this._initialized){
 		this._waiting = {};
 	
@@ -36,39 +36,39 @@ LayoutBridge.prototype.init = function(){
 	}
 };
 
-LayoutBridge.prototype.addVertex = function(callback){
-	if(!this._initialized) throw "Initialize LayoutBridge first";
+LayoutFacade.prototype.addVertex = function(callback){
+	if(!this._initialized) throw "Initialize LayoutFacade first";
 
 	var ticket = this._netxtId++;
 	this._waiting[ticket] = callback;
 	this._worker.postMessage({cmd: 'addVertex', ticket: ticket});
 };
 	
-LayoutBridge.prototype.removeVertex = function(id, callback){
-	if(!this._initialized) throw "Initialize LayoutBridge first";
+LayoutFacade.prototype.removeVertex = function(id, callback){
+	if(!this._initialized) throw "Initialize LayoutFacade first";
 
 	var ticket = this._netxtId++;
 	this._waiting[ticket] = callback;
 	this._worker.postMessage({cmd: 'removeVertex', id: id, ticket: ticket});
 };
 	
-LayoutBridge.prototype.addEdge = function(sourceId, targetId, callback){
-	if(!this._initialized) throw "Initialize LayoutBridge first";
+LayoutFacade.prototype.addEdge = function(sourceId, targetId, callback){
+	if(!this._initialized) throw "Initialize LayoutFacade first";
 	
 	var ticket = this._netxtId++;
 	this._waiting[ticket] = callback;
 	this._worker.postMessage({cmd: 'addEdge', sourceId: sourceId, targetId: targetId, ticket: ticket});
 };
 
-LayoutBridge.prototype.getPositions = function(callback){
-	if(!this._initialized) throw "Initialize LayoutBridge first";
+LayoutFacade.prototype.getPositions = function(callback){
+	if(!this._initialized) throw "Initialize LayoutFacade first";
 	
 	var ticket = this._netxtId++;
 	this._waiting[ticket] = callback;
 	this._worker.postMessage({cmd: 'getPositions', ticket: ticket});
 };
 
-LayoutBridge.prototype._recvMsg = function(e){
+LayoutFacade.prototype._recvMsg = function(e){
 	if(this._waiting.hasOwnProperty(e.data.ticket)){
 		this._waiting[e.data.ticket](e.data.payload);
 		delete this._waiting[e.data.ticket];
