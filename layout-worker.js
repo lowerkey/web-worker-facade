@@ -1,4 +1,4 @@
-/*
+﻿/*
 	layout-worker.js
 	Joshua Moore
 	2013-04-27
@@ -8,15 +8,15 @@ onmessage = function(e){
 	var cmd = e.data.cmd;
 
 	if(cmd === 'init'){
-		log('initied');
+		log('inited');
 	}
 
 	/*
 		Graph Manipulation
 	 */
-	var id, success;
+	var success;
 	if(cmd === 'addVertex'){
-		log('vertex added')
+		log('vertex added');
 		respond(e.data.ticket, 0);
 	}
 
@@ -42,7 +42,7 @@ onmessage = function(e){
 	 */
 	if(cmd === 'getPositions'){
 		log('positions calculated');
-		var positions = {};
+		var positions = {x: 0, y: 0, z: 0};
 		respond(e.data.ticket, positions);
 	}
 };

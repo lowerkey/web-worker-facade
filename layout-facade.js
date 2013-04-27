@@ -1,4 +1,4 @@
-/*
+﻿/*
 	layout-bridge.js
 	Joshua Moore
 	2013-04-27
@@ -16,7 +16,7 @@ LayoutFacade.prototype.init = function(){
 	if(!this._initialized){
 		this._waiting = {};
 	
-		this._worker = new Worker('/layout-worker.min.js');
+		this._worker = new Worker('/layout-worker.js');
 		var oThis = this;
 		this._worker.onmessage = function(e){oThis._recvMsg(e);};
 		var ticket = this._nextId++;
@@ -31,7 +31,7 @@ LayoutFacade.prototype.init = function(){
 		this._initialized = true;
 		
 		this._waiting[-1] = function(payload){
-			console.log(payload);
+			console.log('layout-facade:', payload);
 		};
 	}
 };
@@ -39,7 +39,7 @@ LayoutFacade.prototype.init = function(){
 LayoutFacade.prototype.addVertex = function(callback){
 	if(!this._initialized) throw "Initialize LayoutFacade first";
 
-	var ticket = this._netxtId++;
+	var ticket = this._nextId++;
 	this._waiting[ticket] = callback;
 	this._worker.postMessage({cmd: 'addVertex', ticket: ticket});
 };
@@ -47,7 +47,7 @@ LayoutFacade.prototype.addVertex = function(callback){
 LayoutFacade.prototype.removeVertex = function(id, callback){
 	if(!this._initialized) throw "Initialize LayoutFacade first";
 
-	var ticket = this._netxtId++;
+	var ticket = this._nextId++;
 	this._waiting[ticket] = callback;
 	this._worker.postMessage({cmd: 'removeVertex', id: id, ticket: ticket});
 };
@@ -55,7 +55,7 @@ LayoutFacade.prototype.removeVertex = function(id, callback){
 LayoutFacade.prototype.addEdge = function(sourceId, targetId, callback){
 	if(!this._initialized) throw "Initialize LayoutFacade first";
 	
-	var ticket = this._netxtId++;
+	var ticket = this._nextId++;
 	this._waiting[ticket] = callback;
 	this._worker.postMessage({cmd: 'addEdge', sourceId: sourceId, targetId: targetId, ticket: ticket});
 };
@@ -63,7 +63,7 @@ LayoutFacade.prototype.addEdge = function(sourceId, targetId, callback){
 LayoutFacade.prototype.getPositions = function(callback){
 	if(!this._initialized) throw "Initialize LayoutFacade first";
 	
-	var ticket = this._netxtId++;
+	var ticket = this._nextId++;
 	this._waiting[ticket] = callback;
 	this._worker.postMessage({cmd: 'getPositions', ticket: ticket});
 };
@@ -71,6 +71,8 @@ LayoutFacade.prototype.getPositions = function(callback){
 LayoutFacade.prototype._recvMsg = function(e){
 	if(this._waiting.hasOwnProperty(e.data.ticket)){
 		this._waiting[e.data.ticket](e.data.payload);
-		delete this._waiting[e.data.ticket];
+		if(e.data.ticket !== -1){
+			delete this._waiting[e.data.ticket];
+		}
 	}
 };

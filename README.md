@@ -3,6 +3,7 @@
 A JavaScript implementation of the 2007 Veldhuizen paper [Dynamic Multilevel Graph Visualization](http://arxiv.org/abs/0712.1549)
 
 ## Goals/Interface
+This project will serve as a replacement for the direct sum physics simulation in flying-faces.
 The goal of this project is to create a force directed 3D graph layout by fulfilling the following graph interface:
 
 ### newVertex(callback) 
@@ -42,6 +43,17 @@ More details will follow as the project progresses.
 
 ## Usage
 It's still too early for that, but eventually, you'll have to include the layout-facade, which will create a web worker from `layout-worker.min.js`.
+But since it is too early for usage, let's skip to Testing
+
+### Testing
+To run the tests, 
+0. clone this repository, 
+1. open your favorite console in the main directory, and 
+2. run `python -m http.server`. 
+3. Next up, open firefox (chrome doesn't work yet) and visit /test/facade.html
+4. Open up a console and watch the magic.
 
 ## Todos:
-1. add tests for layout facade
+0. add tests for layout facade DONE
+1. gut direct sum approach from flying faces for testing purposes
+

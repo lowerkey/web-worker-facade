@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>layout-facade tests</title>
+	</head>
+	<body>
+	
+		<div>open the console</div>
+		<script type="text/javascript" src="jquery/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="../layout-facade.js"></script>
+		<script>
+			$(document).ready(function () {
+				console.group('layout-worker.min.js');
+				var lf = new LayoutFacade();
+				lf.init();
+				lf.addVertex(function(id){
+					console.log(id);
+				});
+				console.groupEnd();
+			});
+		</script>
+	</body>
+</html>
