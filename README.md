@@ -43,3 +43,5 @@ More details will follow as the project progresses.
 ## Usage
 It's still too early for that, but eventually, you'll have to include the layout-bridge, which will create a web worker from `layout-worker.min.js`.
 
+### Todos:
+1. add tests for layout bridge
