@@ -19,7 +19,7 @@ LayoutFacade.prototype.init = function(){
 		this._worker = new Worker('/layout-worker.min.js');
 		var oThis = this;
 		this._worker.onmessage = function(e){oThis._recvMsg(e);};
-		var ticket = _.uniqueId();
+		var ticket = this._nextId++;
 		
 		var waitingCallback = function(){
 			this._initiated = true;
