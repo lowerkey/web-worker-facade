@@ -55,7 +55,11 @@ To run the tests,
 
 ## Todos:
 0. add tests for layout facade DONE
-1. find or implement Graph
-2. implement coarsening from paper
-3. gut direct sum approach from flying faces for testing purposes
+1. find and fix Chrome Issue
+2. Check out ArrayBuffers
+3. find or implement Graph
+4. implement coarsening from paper
+5. gut direct sum approach from flying faces for testing purposes
+
+
 
