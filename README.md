@@ -27,7 +27,10 @@ getPositions()
 ```
 
 ## Design
-Posiphyss will use web workers to hide the main simulation from the user, providing the interface defined above. 
+Posiphyss will use web workers to hide the main simulation from the user, providing the interface defined above. The simulation web worker is wrapped by a layout-bridge with mostly mimics the graph interface. 
+
+More details will follow as the project progresses.
 
 ## Roadmap
-1. The project will begin with section 4 of the paper linked to above, Dynamic Coarsening. 
+0. The first step will be to wrap the web worker in a layout-bridge.
+1. After that, the project will implement section 4 of the linked paper, Dynamic Coarsening. 
