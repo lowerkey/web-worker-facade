@@ -55,5 +55,7 @@ To run the tests,
 
 ## Todos:
 0. add tests for layout facade DONE
-1. gut direct sum approach from flying faces for testing purposes
+1. find or implement Graph
+2. implement coarsening from paper
+3. gut direct sum approach from flying faces for testing purposes
 
