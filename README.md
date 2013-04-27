@@ -34,3 +34,6 @@ More details will follow as the project progresses.
 ## Roadmap
 0. The first step will be to wrap the web worker in a layout-bridge.
 1. After that, the project will implement section 4 of the linked paper, Dynamic Coarsening. 
+
+## Usage
+It's still too early for that, but eventually, you'll have to include the layout-bridge, which will create a web worker from layout-worker.min.js
