@@ -3,7 +3,7 @@
 A JavaScript implementation of the 2007 Veldhuizen paper [Dynamic Multilevel Graph Visualization](http://arxiv.org/abs/0712.1549)
 
 ## Goals/Interface
-The goal of this project is to fulfill the following interface of a yet to be defined graph. 
+The goal of this project is to create a force directed 3D graph layout by fulfilling the following graph interface:
 
 ### newVertex() 
 Returns the id of a newly created vertex.
@@ -26,3 +26,8 @@ getPositions()
 // [{"x": 0, "y": 0, "z": 0}, {"x": 3, "y": 42, "z": 26}, ...]
 ```
 
+## Design
+Posiphyss will use web workers to hide the main simulation from the user, providing the interface defined above. 
+
+## Roadmap
+1. The project will begin with section 4 of the paper linked to above, Dynamic Coarsening. 
