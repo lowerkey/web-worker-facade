@@ -5,24 +5,25 @@ A JavaScript implementation of the 2007 Veldhuizen paper [Dynamic Multilevel Gra
 ## Goals/Interface
 The goal of this project is to create a force directed 3D graph layout by fulfilling the following graph interface:
 
-### newVertex() 
-Returns the id of a newly created vertex.
+### newVertex(callback) 
+`callback` will receive the created vertex's id as its first parameter.
 
-### newEdge(v1id, v2id) 
+### newEdge(v1id, v2id, callback) 
 Takes as arguments the ids of two vertices. 
-Returns the id of a newly created edge.
+Provides `callback` with the id of a newly created edge as its first paramter. 
 
-### removeVertex(vid)
-Removes the specified vertex from the graph.
+### removeVertex(vid, callback)
+Removes the specified vertex from the graph, providing `true` to `callback` if the operation was successfull, and `false` otherwise.
 
-### removeEdge(eid)
+### removeEdge(eid, callback)
 Removes the specified edge from the graph.
+Returns `true` if the operation was successful, and `false` otherwise. 
 
-### getPositions() 
-Returns the positions of all vertices, as a JSON array of 3D positions.
+### getPositions(callback) 
+Returns the positions of all vertices, as a JSON array of 3D positions, supplying the parsed JSON as `callback`'s first parameter.
 
 ```
-getPositions()
+getPositions(function(positions){ console.log(positions) });
 // [{"x": 0, "y": 0, "z": 0}, {"x": 3, "y": 42, "z": 26}, ...]
 ```
 
@@ -33,7 +34,9 @@ More details will follow as the project progresses.
 
 ## Roadmap
 0. The first step will be to wrap the web worker in a layout-bridge.
-1. After that, the project will implement section 4 of the linked paper, Dynamic Coarsening. 
+1. Check out promises, and decide whether to rework layout-bridge to return them.
+2. After that, the project will implement section 4 of the linked paper, Dynamic Coarsening. 
+
 
 ## Usage
 It's still too early for that, but eventually, you'll have to include the layout-bridge, which will create a web worker from layout-worker.min.js
